@@ -14,12 +14,11 @@ import model.regression_model as rm
 from pycaret.regression import*
 
 
-st.write("""
-Auto ML
----
-""")
 with st.sidebar:
-    st.image("https://media.licdn.com/dms/image/C5612AQEqc9pHQQUZYA/article-cover_image-shrink_720_1280/0/1520173001225?e=2147483647&v=beta&t=QMwwFQOCHsfoyENyTolItXJHViGGQdp10HmrfJXxr2A")
+
+    st.image("https://developer.apple.com/assets/elements/icons/create-ml/create-ml-96x96_2x.png")
+    st.title('Auto ML')
+    #st.write("""---""")
     nav_choice = st.radio(
         "Navigation",
        ['Uploading','Profiling','Mechine Learning','Forecasting']
