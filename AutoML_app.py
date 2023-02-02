@@ -75,9 +75,10 @@ if nav_choice == 'Forecasting':
             test_df = pd.read_csv(test_file)
             if model_type == "Classification":
                 test_result = cm.predict_test(test_df)
+                test_result.to_csv('test_result.csv')
             else:
                 test_result = rm.predict_test(test_df)
-        test_result.to_csv('test_result.csv')
+                test_result.to_csv('test_result.csv')
         st.dataframe(test_result)
         with ('test_result.csv','rb') as f :
             st.download_button('Download Model',f,'test_result.csv')

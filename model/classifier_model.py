@@ -14,4 +14,5 @@ def get_model(target):
     return([setup_df,compare_df,best_model])
 
 def predict_test(test_df):
-    return predict_model(test_df)
+    best_model = load_model('best_model') 
+    return predict_model(best_model,data=test_df)
