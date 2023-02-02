@@ -87,6 +87,6 @@ if nav_choice == 'Forecasting':
     except Exception as e:
         st.write("Oops..! Something went worng, please check if you target and test data match")
         st.dataframe(df.head())
-        st.dataframe(test_result.head())
+        st.dataframe(test_file.head())
         st.write(e)
 
