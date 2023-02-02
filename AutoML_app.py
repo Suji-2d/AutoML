@@ -25,27 +25,30 @@ with st.sidebar:
     )
 
 if nav_choice =="Uploading":
-    st.write("""
-    ### Upload you Data for Modeling!
-    """)
+    st.write("""## Upload your Data for Modeling""")
     uploaded_file = st.file_uploader("Choose a file")
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file,index_col=None)
         st.dataframe(df)
         df.to_csv('model_data.csv')
 
-if os.path.exists("model_data.csv"):
+source_data_exists = os.path.exists("model_data.csv")
+if source_data_exists:
     df=pd.read_csv('model_data.csv',index_col=None)
 
 if nav_choice=="Profiling":
-    st.title("Automated Exploratory Data Analysis")
-    data_report = df.profile_report()
-    st_profile_report(data_report)
+    
+    st.write("""## Automated Exploratory Data Analysis""")
+    if source_data_exists:
+        data_report = df.profile_report()
+        st_profile_report(data_report)
+    else:
+        st.write("Please upload your training data in uploading page")
 
 model_type = "Classification"
 
 if nav_choice == 'Mechine Learning':
-    st.title("ML model selection")
+    st.write("""## ML model selection""")
     model_type = st.radio('Select model type',
     ('Classification','Regression'))
     target = st.selectbox('Select the target',df.columns)
@@ -68,7 +71,7 @@ if nav_choice == 'Mechine Learning':
             st.download_button('Download Model',f,'best_model.pkl')
 
 if nav_choice == 'Forecasting':
-    st.title('Predict target with the model')
+    st.write("""## Predict target with the model""")
     try:
         if os.path.exists("best_model.pkl"):
             test_file = st.file_uploader("Choose a file")
