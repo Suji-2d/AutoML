@@ -7,6 +7,7 @@ Pages:
 3.AutoML (classification/regression) [pycaret]  
 4.Prediction [pycaret]  
 
-Future enhansment: Add "Clear Data" button to delete internally stored files (input_df, output_df and model_pkl)
+Future enhansment: 
+Add "Clear Data" button to delete internally stored files (input_df, output_df and model_pkl)
 
 app-link: https://suji-2d-automl-automl-app-rwdf0z.streamlit.app/
