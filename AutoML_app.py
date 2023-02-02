@@ -79,12 +79,14 @@ if nav_choice == 'Forecasting':
                     test_result = cm.predict_test(test_df)
                 else:
                     test_result = rm.predict_test(test_df)
-                test_result.to_csv('test_result.csv')
+                test_result.to_csv('test_result.csv',index=False)
                 if st.button('Predict'):
                     st.dataframe(test_result)
                     with ('test_result.csv','rb') as f :
                         st.download_button('Download Model',f,'test_result.csv')
     except Exception as e:
         st.write("Oops..! Something went worng, please check if you target and test data match")
+        st.dataframe(df.head())
+        st.dataframe(test_result.head())
         st.write(e)
 
