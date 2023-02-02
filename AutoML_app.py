@@ -50,6 +50,7 @@ if nav_choice == 'Mechine Learning':
     ('Classification','Regression'))
     target = st.selectbox('Select the target',df.columns[1:])
     if st.button('Train Model'):
+        st.write("""---""")
         if model_type == 'Classification':
             model_list = cm.get_model(target) #[ml experiment settings, model compare results, best model]
             st.info("This is the ML experiment settings")
@@ -68,17 +69,22 @@ if nav_choice == 'Mechine Learning':
 
 if nav_choice == 'Forecasting':
     st.title('Predict target with the model')
-    with open('best_model.pkl','rb') as f :
-        model = pickle.load(f)
-        test_file = st.file_uploader("Choose a file")
-        if test_file:
-            test_df = pd.read_csv(test_file)
-            if model_type == "Classification":
-                test_result = cm.predict_test(test_df)
-                test_result.to_csv('test_result.csv')
-            else:
-                test_result = rm.predict_test(test_df)
-                test_result.to_csv('test_result.csv')
-        st.dataframe(test_result)
-        with ('test_result.csv','rb') as f :
-            st.download_button('Download Model',f,'test_result.csv')
+    try:
+        with open('best_model.pkl','rb') as f :
+            model = pickle.load(f)
+            test_file = st.file_uploader("Choose a file")
+            if test_file:
+                test_df = pd.read_csv(test_file)
+                if model_type == "Classification":
+                    test_result = cm.predict_test(test_df)
+                    test_result.to_csv('test_result.csv')
+                else:
+                    test_result = rm.predict_test(test_df)
+                    test_result.to_csv('test_result.csv')
+                if st.button('Predict'):
+                    st.dataframe(test_result)
+                    with ('test_result.csv','rb') as f :
+                        st.download_button('Download Model',f,'test_result.csv')
+    except:
+        st.write("Oops..! Something went worng, please check if you target and test data match")
+
