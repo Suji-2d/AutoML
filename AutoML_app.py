@@ -5,13 +5,13 @@ import os
 import pickle
 
 #profiling imports
-import pandas_profiling
+import ydata_profiling
 from streamlit_pandas_profiling import st_profile_report 
 
 #autoMl imports
 import model.classifier_model as cm
 import model.regression_model as rm
-from pycaret.regression import*
+#from pycaret.regression import*
 
 
 with st.sidebar:
@@ -57,20 +57,13 @@ if nav_choice == 'Mechine Learning':
             st.info("Comparision table of ML models")
             st.dataframe(model_list[1])
         else:
-            # model_list = rm.get_model(target) #[ml experiment settings, model compare results, best model]
-            # st.info("This is the ML experiment settings")
-            # st.dataframe(model_list[0])
-            # st.info("Comparision table of ML models")
-            # st.dataframe(model_list[1])
-            setup(df,target=target)
-            setup_df = pull()
-            best_model = compare_models()
-            compare_df = pull()
-            st.dataframe(compare_df)
-            save_model(best_model,'best_model')
+            model_list = rm.get_model(target) #[ml experiment settings, model compare results, best model]
+            st.info("This is the ML experiment settings")
+            st.dataframe(model_list[0])
+            st.info("Comparision table of ML models")
+            st.dataframe(model_list[1])
             
-
-        with ('best_model.pkl','rb') as f :
+        with open('best_model.pkl','rb') as f :
             st.download_button('Download Model',f,'best_model.pkl')
 
 if nav_choice == 'Forecasting':
