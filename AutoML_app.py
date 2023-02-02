@@ -48,7 +48,7 @@ if nav_choice == 'Mechine Learning':
     st.title("ML model selection")
     model_type = st.radio('Select model type',
     ('Classification','Regression'))
-    target = st.selectbox('Select the target',df.columns[1:])
+    target = st.selectbox('Select the target',df.columns)
     if st.button('Train Model'):
         st.write("""---""")
         if model_type == 'Classification':
