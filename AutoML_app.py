@@ -30,12 +30,12 @@ if nav_choice =="Uploading":
     """)
     uploaded_file = st.file_uploader("Choose a file")
     if uploaded_file is not None:
-        df = pd.read_csv(uploaded_file,index_col=0)
+        df = pd.read_csv(uploaded_file,index_col=None)
         st.dataframe(df)
         df.to_csv('model_data.csv')
 
 if os.path.exists("model_data.csv"):
-    df=pd.read_csv('model_data.csv',index_col=0)
+    df=pd.read_csv('model_data.csv',index_col=None)
 
 if nav_choice=="Profiling":
     st.title("Automated Exploratory Data Analysis")
@@ -70,11 +70,10 @@ if nav_choice == 'Mechine Learning':
 if nav_choice == 'Forecasting':
     st.title('Predict target with the model')
     try:
-        with open('best_model.pkl','rb') as f :
-            model = pickle.load(f)
+        if os.path.exists("best_model.pkl"):
             test_file = st.file_uploader("Choose a file")
             if test_file:
-                test_df = pd.read_csv(test_file,index_col=0)
+                test_df = pd.read_csv(test_file,index_col=None)
                 if model_type == "Classification":
                     test_result = cm.predict_test(test_df)
                 else:
@@ -84,6 +83,9 @@ if nav_choice == 'Forecasting':
                     st.dataframe(test_result)
                     with ('test_result.csv','rb') as f :
                         st.download_button('Download Model',f,'test_result.csv')
+        else:
+            st.write("Please train a Model in ML page!")
+            
     except Exception as e:
         st.write("Oops..! Something went worng, please check if you target and test data match")
         st.dataframe(df.head())
