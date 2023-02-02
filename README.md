@@ -1,10 +1,11 @@
 # AutoML
 Automation of ML regression and classification with python pandas and pyCaret in streamlit
+
 Pages:
--Uplaoding
--Profiling [pandas_profiling]
--AutoML (classification/regression) [pycaret]
--Prediction [pycaret]
+1.Uplaoding
+2.Profiling [pandas_profiling]
+3.AutoML (classification/regression) [pycaret]
+4.Prediction [pycaret]
 
 Future enhansment: Add "Clear Data" button to delete internally stored files (input_df, output_df and model_pkl)
 
