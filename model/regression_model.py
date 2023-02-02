@@ -3,7 +3,7 @@ from pycaret.regression import*
 import os
 
 if os.path.exists("model_data.csv"):
-    df=pd.read_csv('model_data.csv')
+    df=pd.read_csv('model_data.csv',index_col=0)
 
 def get_model(target):
     setup(df,target=target)
