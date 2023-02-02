@@ -68,8 +68,8 @@ if nav_choice == 'Mechine Learning':
 
 if nav_choice == 'Forecasting':
     st.title('Predict target with the model')
-    if os.path.exists("best_model.pkl"):
-        model = pickle.load('best_model.pkl')
+    with open('best_model.pkl','rb') as f :
+        model = pickle.load(f)
         test_file = st.file_uploader("Choose a file")
         if test_file:
             test_df = pd.read_csv(test_file)
