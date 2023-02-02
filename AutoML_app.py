@@ -32,7 +32,7 @@ if nav_choice =="Uploading":
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file,index_col=0)
         st.dataframe(df)
-        df.to_csv('model_data.csv',index=False)
+        df.to_csv('model_data.csv')
 
 if os.path.exists("model_data.csv"):
     df=pd.read_csv('model_data.csv',index_col=0)
@@ -79,7 +79,7 @@ if nav_choice == 'Forecasting':
                     test_result = cm.predict_test(test_df)
                 else:
                     test_result = rm.predict_test(test_df)
-                test_result.to_csv('test_result.csv',index=False)
+                test_result.to_csv('test_result.csv')
                 if st.button('Predict'):
                     st.dataframe(test_result)
                     with ('test_result.csv','rb') as f :
