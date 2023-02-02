@@ -30,12 +30,12 @@ if nav_choice =="Uploading":
     """)
     uploaded_file = st.file_uploader("Choose a file")
     if uploaded_file is not None:
-        df = pd.read_csv(uploaded_file)
+        df = pd.read_csv(uploaded_file,index_col=None)
         st.dataframe(df)
-        df.to_csv('model_data.csv')
+        df.to_csv('model_data.csv',index=None)
 
 if os.path.exists("model_data.csv"):
-    df=pd.read_csv('model_data.csv')
+    df=pd.read_csv('model_data.csv',index_col=None)
 
 if nav_choice=="Profiling":
     st.title("Automated Exploratory Data Analysis")
@@ -74,13 +74,12 @@ if nav_choice == 'Forecasting':
             model = pickle.load(f)
             test_file = st.file_uploader("Choose a file")
             if test_file:
-                test_df = pd.read_csv(test_file)
+                test_df = pd.read_csv(test_file,index_col=None)
                 if model_type == "Classification":
                     test_result = cm.predict_test(test_df)
-                    test_result.to_csv('test_result.csv')
                 else:
                     test_result = rm.predict_test(test_df)
-                    test_result.to_csv('test_result.csv')
+                test_result.to_csv('test_result.csv',index=None)
                 if st.button('Predict'):
                     st.dataframe(test_result)
                     with ('test_result.csv','rb') as f :
