@@ -85,6 +85,8 @@ if nav_choice == 'Forecasting':
                     with ('test_result.csv','rb') as f :
                         st.download_button('Download Model',f,'test_result.csv')
     except Exception as e:
+        st.dataframe(test_df.head())
+        st.dataframe(df.head())
         st.write("Oops..! Something went worng, please check if you target and test data match")
         st.write(e)
 
