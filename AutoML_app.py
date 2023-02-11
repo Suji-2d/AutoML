@@ -34,8 +34,8 @@ if nav_choice =="Uploading":
     st.write('Try with sample Titanic Data set')
     
     #remove index on example data set
-    pd.read_csv('./example data/titanic_train.csv',index_col=None).to_csv('./example data/titanic_train.csv')
-    pd.read_csv('./example data/titanic_test.csv',index_col=None).to_csv('./example data/titanic_test.csv')
+    pd.read_csv(open('./example data/titanic_train.csv','rb'),index_col=None).to_csv('./example data/titanic_train.csv')
+    pd.read_csv(open('./example data/titanic_test.csv','rb'),index_col=None).to_csv('./example data/titanic_test.csv')
     
     train_df = open('./example data/titanic_train.csv','rb')
     test_df = open('./example data/titanic_test.csv','rb')
