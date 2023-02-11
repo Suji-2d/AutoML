@@ -32,8 +32,8 @@ if nav_choice =="Uploading":
         st.dataframe(df)
         df.to_csv('model_data.csv')
     st.write('Try with sample Titanic Data set')
-    train_df = pd.read_csv('example data/titanic_train.csv',index_col=None)
-    test_df = pd.read_csv('example data/titanic_test.csv',index_col=None)
+    train_df = pd.read_csv('./example data/titanic_train.csv',index_col=None)
+    test_df = pd.read_csv('./example data/titanic_test.csv',index_col=None)
     st.download_button('Download Train Data',train_df,'train_data.csv')
     st.download_button('Download Test Data',test_df,'test_data.csv')
     
