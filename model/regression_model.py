@@ -2,10 +2,10 @@ import pandas as pd
 from pycaret.regression import*
 import os
 
-if os.path.exists("./model_data.csv"):
-    df=pd.read_csv('model_data.csv')
+# if os.path.exists("./model_data.csv"):
+#     df=pd.read_csv('model_data.csv')
 
-def get_model(target):
+def get_model(df,target):
     setup(df,target=target)
     setup_df = pull()
     best_model = compare_models()
