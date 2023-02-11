@@ -11,5 +11,5 @@ Future enhansment:
 Add "Clear Data" button to delete internally stored files (input_df, output_df and model_pkl)
 
 
-deployement platfrom: Streamlit
+deployement platfrom: Streamlit.   
 app-link: https://suji-2d-automl-automl-app-rwdf0z.streamlit.app/
