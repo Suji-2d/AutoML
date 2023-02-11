@@ -91,7 +91,7 @@ if nav_choice == 'Forecasting':
                 test_result.to_csv('test_result.csv',index=False)
                 if st.button('Predict'):
                     st.dataframe(test_result)
-                    with ('test_result.csv','rb') as f :
+                    with open('test_result.csv','rb') as f :
                         st.download_button('Download Result',f,'test_result.csv')
         else:
             st.write("Please train a Model in ML page!")
