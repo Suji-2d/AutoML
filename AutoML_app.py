@@ -99,8 +99,10 @@ if nav_choice == 'Forecasting':
             st.write("Please train a Model in ML page!")
             
     except Exception as e:
-        st.write("Oops..! Something went worng, please check if you target and test data match")
-        st.dataframe(df.head())
-        st.dataframe(test_df.head())
+        st.write("Oops..! Something went worng, please check if your target and test data set variavle names match")
+        st.write(f"Train Data: {df.columns}")
+        #st.dataframe(df.head())
+        st.write(f"Test Data: {test_df.columns}")
+        #st.dataframe(test_df.head())
         st.write(e)
 
