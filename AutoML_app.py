@@ -32,6 +32,11 @@ if nav_choice =="Uploading":
         st.dataframe(df)
         df.to_csv('model_data.csv')
     st.write('Try with sample Titanic Data set')
+    
+    #remove index on example data set
+    pd.read_csv('./example data/titanic_train.csv',index_col=None).to_csv('./example data/titanic_train.csv')
+    pd.read_csv('./example data/titanic_test.csv',index_col=None).to_csv('./example data/titanic_test.csv')
+    
     train_df = open('./example data/titanic_train.csv','rb')
     test_df = open('./example data/titanic_test.csv','rb')
     st.download_button('Download Train Data',train_df,'train_data.csv')
@@ -90,7 +95,7 @@ if nav_choice == 'Forecasting':
                 if st.button('Predict'):
                     st.dataframe(test_result)
                     with ('test_result.csv','rb') as f :
-                        st.download_button('Download Model',f,'test_result.csv')
+                        st.download_button('Download Result',f,'test_result.csv')
         else:
             st.write("Please train a Model in ML page!")
             
