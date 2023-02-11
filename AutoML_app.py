@@ -30,7 +30,7 @@ if nav_choice =="Uploading":
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file,index_col=None)
         st.dataframe(df)
-        df.to_csv('model_data.csv')
+        df.to_csv('model_data.csv',index=False)
         #df.to_csv('./example data/titanic_train.csv')
     st.write('Try with sample Titanic Data set')
     
