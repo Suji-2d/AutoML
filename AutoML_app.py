@@ -36,8 +36,6 @@ if nav_choice =="Uploading":
     test_df = open('./example data/titanic_test.csv','rb')
     st.download_button('Download Train Data',train_df,'train_data.csv')
     st.download_button('Download Test Data',test_df,'test_data.csv')
-    
-    st.download_button('Download Train data',train_df,'train_data.csv')
 
 source_data_exists = os.path.exists("model_data.csv")
 if source_data_exists:
