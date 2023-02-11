@@ -64,7 +64,7 @@ if nav_choice == 'Mechine Learning':
     if st.button('Train Model'):
         st.write("""---""")
         if model_type == 'Classification':
-            model_list = cm.get_model(target) #[ml experiment settings, model compare results, best model]
+            model_list = cm.get_model(df,target) #[ml experiment settings, model compare results, best model]
             st.info("This is the ML experiment settings")
             st.dataframe(model_list[0])
             st.info("Comparision table of ML models")
@@ -100,9 +100,9 @@ if nav_choice == 'Forecasting':
             
     except Exception as e:
         st.write("Oops..! Something went worng, please check if your target and test data set variavle names match")
-        st.write(f"Train Data: {df.columns}")
+        st.write(f"Train Data: {list(df.columns})")
         #st.dataframe(df.head())
-        st.write(f"Test Data: {test_df.columns}")
+        st.write(f"Test Data: {list(test_df.columns})")
         #st.dataframe(test_df.head())
         st.write(e)
 
