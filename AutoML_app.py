@@ -100,9 +100,9 @@ if nav_choice == 'Forecasting':
             
     except Exception as e:
         st.write("Oops..! Something went worng, please check if your target and test data set variavle names match")
-        st.write(f"Train Data: {list(df.columns})")
+        st.write(f"Train Data: {list(df.columns)}")
         #st.dataframe(df.head())
-        st.write(f"Test Data: {list(test_df.columns})")
+        st.write(f"Test Data: {list(test_df.columns)}")
         #st.dataframe(test_df.head())
         st.write(e)
 
