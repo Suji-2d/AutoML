@@ -30,17 +30,14 @@ if nav_choice =="Uploading":
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file,index_col=None)
         st.dataframe(df)
-        df.to_csv('model_data.csv')
+        #df.to_csv('model_data.csv')
+        df.to_csv('./example data/titanic_train.csv')
     st.write('Try with sample Titanic Data set')
-    
-    #remove index on example data set
-    pd.read_csv(open('./example data/titanic_train.csv','rb'),index_col=None).to_csv('./example data/titanic_train.csv')
-    pd.read_csv(open('./example data/titanic_test.csv','rb'),index_col=None).to_csv('./example data/titanic_test.csv')
     
     train_df = open('./example data/titanic_train.csv','rb')
     test_df = open('./example data/titanic_test.csv','rb')
     st.download_button('Download Train Data',train_df,'train_data.csv')
-    st.download_button('Download Test Data',test_df,'test_data.csv')
+   #3st.download_button('Download Test Data',test_df,'test_data.csv')
 
 source_data_exists = os.path.exists("model_data.csv")
 if source_data_exists:
