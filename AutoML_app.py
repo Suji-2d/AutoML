@@ -69,7 +69,7 @@ if nav_choice == 'Mechine Learning':
             st.info("Comparision table of ML models")
             st.dataframe(model_list[1])
         else:
-            model_list = rm.get_model(target) #[ml experiment settings, model compare results, best model]
+            model_list = rm.get_model(df,target) #[ml experiment settings, model compare results, best model]
             st.info("This is the ML experiment settings")
             st.dataframe(model_list[0])
             st.info("Comparision table of ML models")
